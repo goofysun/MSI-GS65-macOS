@@ -5,7 +5,7 @@
 	<key>ACPI</key>
 	<dict>
 		<key>AutoMerge</key>
-		<true/>
+		<false/>
 		<key>DSDT</key>
 		<dict>
 			<key>Debug</key>
@@ -17,7 +17,7 @@
 				<key>AddDTGP</key>
 				<false/>
 				<key>AddPNLF</key>
-				<true/>
+				<false/>
 				<key>FixAirport</key>
 				<false/>
 				<key>FixDisplay</key>
@@ -121,6 +121,10 @@
 		</dict>
 		<key>DisableASPM</key>
 		<false/>
+		<key>DisabledAML</key>
+		<array>
+			<string>SSDT-Disable-DGPU.aml</string>
+		</array>
 		<key>DropTables</key>
 		<array>
 			<dict>
@@ -129,9 +133,9 @@
 			</dict>
 		</array>
 		<key>FixHeaders</key>
-		<true/>
+		<false/>
 		<key>FixMCFG</key>
-		<true/>
+		<false/>
 		<key>HaltEnabler</key>
 		<false/>
 		<key>PatchAPIC</key>
@@ -162,7 +166,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>-v slide=0 dart=0 darkwake=8</string>
+		<string>dart=0 -alcbeta -igfxbeta -v -lilubetaall slide=0 ngfxcompat=1 darkwake=8</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -196,7 +200,7 @@
 			<key>AFGLowPowerState</key>
 			<true/>
 			<key>Inject</key>
-			<integer>7</integer>
+			<integer>13</integer>
 			<key>ResetHDA</key>
 			<true/>
 		</dict>
@@ -205,6 +209,8 @@
 			<key>IntelGFX</key>
 			<string>0x591B8086</string>
 		</dict>
+		<key>IntelMaxValue</key>
+		<integer>5273</integer>
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
@@ -215,11 +221,6 @@
 			<true/>
 		</dict>
 	</dict>
-	<key>DisableDrivers</key>
-	<array>
-		<string>EmuVariableUefi</string>
-		<string>Nothing</string>
-	</array>
 	<key>GUI</key>
 	<dict>
 		<key>Hide</key>
@@ -262,7 +263,9 @@
 		<key>EDID</key>
 		<dict>
 			<key>Inject</key>
-			<false/>
+			<true/>
+			<key>ProductID</key>
+			<string>0x9C7c</string>
 		</dict>
 		<key>Inject</key>
 		<dict>
@@ -271,7 +274,7 @@
 			<key>Intel</key>
 			<true/>
 			<key>NVidia</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>ig-platform-id</key>
 		<string>0x591b0000</string>
@@ -339,27 +342,27 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>USB Port Limit Patch</string>
+				<string>AirPort Extreme</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
-				g32MEA==
+				axAAAHUN
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
 				<key>Name</key>
-				<string>AppleUSBXHCIPCI</string>
+				<string>AirPortBrcm4360</string>
 				<key>Replace</key>
 				<data>
-				g32MGQ==
+				axAAAJCQ
 				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>Enable TRIM for SSD</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				AEFQUExFIFNTRAA=
@@ -393,60 +396,6 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext (credit RehabMan)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				RiV1VCUwNHgA
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>AppleBacklight</string>
-				<key>Replace</key>
-				<data>
-				RiV1VHh4eHgA
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>黑屏补丁</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				ugUAAAA=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleGraphicsDevicePolicy</string>
-				<key>Replace</key>
-				<data>
-				ugAAAAA=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>10.13+-第二阶段花屏补丁</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				AQAAdSI=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>IOGraphicsFamily</string>
-				<key>Replace</key>
-				<data>
-				AQAA6yI=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string> Change VRAM 1536 -&gt; 2048 for 0x59260002</string>
 				<key>Disabled</key>
 				<false/>
@@ -456,6 +405,8 @@
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
+				<key>MatchOS</key>
+				<string>10.13.x</string>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Replace</key>
@@ -465,27 +416,9 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>blackscreen2</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				Ym9hcmQtaWQ=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>AppleGraphicsDevicePolicy</string>
-				<key>Replace</key>
-				<data>
-				Ym9hcmQtaXg=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string>0x591b0000, 0105 instead of 0306, HDMI</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				AgQKAAAIAACHAQAAAwYKAAAEAACHAQAA/wAAAAEAAAAg
@@ -499,24 +432,6 @@
 				<data>
 				AQUKAAAIAACHAQAAAgQKAAAIAACHAQAA/wAAAAEAAAAg
 				AAAA
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>0x591b0000, 32MB BIOS, 19MB framebuffer 9MB cursor bytes (credit RehabMan)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				AABgAgAAUAE=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
-				<key>Replace</key>
-				<data>
-				AAAwAQAAkAA=
 				</data>
 			</dict>
 			<dict>
@@ -562,7 +477,7 @@ Find:       4885ff74 47488b07
 Replace:    41be0f00 0000eb44
 </string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				SIX/dEdIiwc=
@@ -576,6 +491,80 @@ Replace:    41be0f00 0000eb44
 				Qb4PAAAA60Q=
 				</data>
 			</dict>
+			<dict>
+				<key>Comment</key>
+				<string> IONVMeFamily Preferred Block Size 0x10 -&gt; 0x01 (c) Pike R. Alpha implemented by syscl adapted for 10.13.x by Ricky</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				9sEQD4VBAQAA
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>IONVMeFamily</string>
+				<key>Replace</key>
+				<data>
+				9sECD4VBAQAA
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>USB 10.13.4+ by PMHeart</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				g32UDw+DlwQAAA==
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>MatchOS</key>
+				<string>10.13.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.usb.AppleUSBXHCI</string>
+				<key>Replace</key>
+				<data>
+				g32UD5CQkJCQkA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>黑屏补丁</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				ugUAAAA=
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>com.apple.driver.AppleGraphicsDevicePolicy</string>
+				<key>Replace</key>
+				<data>
+				ugAAAAA=
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>blackscreen2</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				Ym9hcmQtaWQ=
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>AppleGraphicsDevicePolicy</string>
+				<key>Replace</key>
+				<data>
+				Ym9hcmQtaXg=
+				</data>
+			</dict>
 		</array>
 	</dict>
 	<key>RtVariables</key>
@@ -587,12 +576,52 @@ Replace:    41be0f00 0000eb44
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
+		<key>BiosReleaseDate</key>
+		<string>04/09/2018</string>
+		<key>BiosVendor</key>
+		<string>Apple Inc.</string>
+		<key>BiosVersion</key>
+		<string>MBP114.88Z.0183.B00.1804091616</string>
+		<key>Board-ID</key>
+		<string>Mac-06F11F11946D27C5</string>
+		<key>BoardManufacturer</key>
+		<string>Apple Inc.</string>
+		<key>BoardSerialNumber</key>
+		<string>C02517306QXFF4G1F</string>
+		<key>BoardType</key>
+		<integer>10</integer>
+		<key>BoardVersion</key>
+		<string>1.0</string>
+		<key>ChassisAssetTag</key>
+		<string>MacBook-Aluminum</string>
+		<key>ChassisManufacturer</key>
+		<string>Apple Inc.</string>
+		<key>ChassisType</key>
+		<string>0x0A</string>
+		<key>Family</key>
+		<string>MacBook Pro</string>
+		<key>FirmwareFeatures</key>
+		<string>0xE80FE137</string>
+		<key>FirmwareFeaturesMask</key>
+		<string>0xFF1FFF3F</string>
+		<key>LocationInChassis</key>
+		<string>Part Component</string>
+		<key>Manufacturer</key>
+		<string>Apple Inc.</string>
 		<key>Mobile</key>
 		<true/>
+		<key>PlatformFeature</key>
+		<string>0x02</string>
 		<key>ProductName</key>
-		<string>MacBookPro14,3</string>
+		<string>MacBookPro11,5</string>
+		<key>SerialNumber</key>
+		<string>C02PNQ8OG85Y</string>
+		<key>SmUUID</key>
+		<string>6B844E27-B546-4864-9AE1-BCCD7171CAE0</string>
 		<key>Trust</key>
 		<true/>
+		<key>Version</key>
+		<string>1.0</string>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
