@@ -1,33 +1,38 @@
 
-Clover EFI installer log - Wed Jun 20 16:27:03 CST 2018
-Installer version: v2.4k r4558 EFI bootloader
+Clover EFI installer log - Thu Dec  6 12:07:58 CST 2018
+Installer version: v2.4k r4784 EFI bootloader
 ======================================================
 /dev/disk0 (internal):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                         512.1 GB   disk0
-   1:                        EFI EFI                     209.7 MB   disk0s1
-   2:                 Apple_APFS Container disk1         511.9 GB   disk0s2
+   1:                        EFI SYSTEM                  314.6 MB   disk0s1
+   2:         Microsoft Reserved                         134.2 MB   disk0s2
+   3:       Microsoft Basic Data Windows                 294.9 GB   disk0s3
+   4:           Windows Recovery                         943.7 MB   disk0s4
+   5:       Microsoft Basic Data DATA                    196.3 GB   disk0s5
+   6:           Windows Recovery                         19.5 GB    disk0s6
 
-/dev/disk1 (synthesized):
+/dev/disk1 (internal):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:      APFS Container Scheme -                      +511.9 GB   disk1
-                                 Physical Store disk0s2
-   1:                APFS Volume MAC                     120.7 GB   disk1s1
-   2:                APFS Volume Preboot                 24.0 MB    disk1s2
-   3:                APFS Volume Recovery                510.4 MB   disk1s3
-   4:                APFS Volume VM                      8.6 GB     disk1s4
+   0:      GUID_partition_scheme                         512.1 GB   disk1
+   1:                        EFI EFI                     209.7 MB   disk1s1
+   2:                 Apple_APFS Container disk2         511.9 GB   disk1s2
 
-/dev/disk2 (internal):
+/dev/disk2 (synthesized):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:      GUID_partition_scheme                         512.1 GB   disk2
-   1:         Microsoft Reserved                         16.8 MB    disk2s1
-   2:       Microsoft Basic Data                         512.1 GB   disk2s2
+   0:      APFS Container Scheme -                      +511.9 GB   disk2
+                                 Physical Store disk1s2
+   1:                APFS Volume MAC                     95.3 GB    disk2s1
+   2:                APFS Volume Preboot                 248.6 MB   disk2s2
+   3:                APFS Volume Recovery                3.6 GB     disk2s3
+   4:                APFS Volume VM                      9.7 GB     disk2s4
+   5:                APFS Volume MACData                 166.4 GB   disk2s5
 
-Target volume /Volumes/MAC on disk1 is APFS on physical store disk0s2
+Target volume /Volumes/MAC on disk2 is APFS on physical store disk1s2
 ======================================================
 Backing up EFI files
 
-Backing up /Volumes/MAC/EFIROOTDIR/EFI folder to /Volumes/MAC/EFI-Backups/r4542/2018-06-20-16h27/EFI
+Backing up /Volumes/MAC/EFIROOTDIR/EFI folder to /Volumes/MAC/EFI-Backups/r4769/2018-12-06-12h07/EFI
 ======================================================
 Installing BootSectors/BootLoader
 
