@@ -84,6 +84,27 @@
 					<string>Toleda -  Realtek ALC1220</string>
 					<key>ConfigData</key>
 					<data>
+					ASccAAEnHQABJx6mAScfmQGXHEABlx2QAZce
+					gQGXHwEBtxxQAbcdQAG3HhEBtx+ZAbcMAg==
+					</data>
+					<key>FuncGroup</key>
+					<integer>1</integer>
+					<key>LayoutID</key>
+					<integer>17</integer>
+					<key>WakeVerbReinit</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>AFGLowPowerState</key>
+					<data>
+					AwAAAA==
+					</data>
+					<key>CodecID</key>
+					<integer>283906592</integer>
+					<key>CodecName</key>
+					<string>Toleda -  Realtek ALC1220</string>
+					<key>ConfigData</key>
+					<data>
 					AUccEAFHHUABRx4RAUcfkAFHDAIBVxzwAVcd
 					AAFXHgABVx9AAWcc8AFnHQABZx4AAWcfQAGH
 					HEABhx1gAYceAQGHHwEBlxxgAZcdkAGXHqAB
